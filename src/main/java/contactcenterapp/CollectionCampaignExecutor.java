@@ -7,7 +7,7 @@ import io.temporal.serviceclient.WorkflowServiceStubs;
 
 import java.util.UUID;
 
-public class CollectionCampaignStart {
+public class CollectionCampaignExecutor {
 
     public static void main(String[] arg) {
         WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
@@ -22,12 +22,12 @@ public class CollectionCampaignStart {
         // WorkflowStubs enable calls to methods as if the Workflow object is local, but actually perform an RPC.
         CollectionCampaignWorkflow workflow = client.newWorkflowStub(CollectionCampaignWorkflow.class, options);
 
-        String campaignId = UUID.randomUUID().toString();
+        String campaignId = "02";
         String contactId = UUID.randomUUID().toString();
 
         ContactInfo contactInfo = new ContactInfo();
         contactInfo.setId(contactId);
-        contactInfo.setName("Gabriel Diaz");
+        contactInfo.setName("Bala Katta");
         contactInfo.setEmailAddress("gabriel@email.com");
         contactInfo.setPhoneNumber("+57300000000");
 
@@ -35,7 +35,8 @@ public class CollectionCampaignStart {
         WorkflowExecution we = WorkflowClient.start(workflow::contact, campaignId, contactInfo);
 
         System.out.printf("\nContacted %s from campaign %s\n", contactId, campaignId);
-        System.out.printf("\nWorkflowID: %s RunID: %s", we.getWorkflowId(), we.getRunId());
+        System.out.printf("\nWorkflowID: %s \n", we.getWorkflowId());
+        System.out.printf("\nRunID: %s", we.getRunId());
 
         System.exit(0);
     }

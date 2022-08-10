@@ -34,15 +34,15 @@ public class CollectionCampaignWorkflowImpl implements CollectionCampaignWorkflo
 
         // 1. Contact via SMS
         result = smsContact.sendSMS(contactInfo);
-        Workflow.sleep(Duration.ofMinutes(1));
+        Workflow.sleep(Duration.ofSeconds(30));
 
-        if (result == null || !result.equals("OK")) {
+        if (result == null || !result.equals(REACHED)) {
             // 2. Contact via Email if not successfully reached yet
             result = emailContact.sendEmail(contactInfo);
-            Workflow.sleep(Duration.ofMinutes(1));
+            Workflow.sleep(Duration.ofSeconds(30));
         }
 
-        if (result == null || !result.equals("OK")) {
+        if (result == null || !result.equals(REACHED)) {
             // 3. Contact via Phone Call if not successfully reached yet
             result = phoneContactContact.sendPhoneCall(contactInfo);
         }

@@ -4,7 +4,7 @@ public class SMSContactActivityImpl implements SMSContactActivity {
 
     @Override
     public String sendSMS(ContactInfo contactInfo) {
-        return null;
+        return CollectionCampaignWorkflow.NOT_REACHED;
     }
 
 }
