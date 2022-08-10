@@ -1,4 +1,4 @@
-# Money transfer: Java project template
+# Contact Center Campaign Collection Workflow : POC of Temporal.io
 
 This project can be used as a template to start building your own Temporal Workflow application.
 
